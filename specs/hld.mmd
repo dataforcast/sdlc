@@ -1,0 +1,22 @@
+flowchart LR
+
+    USER(["👤 User"])
+
+    subgraph REPO["🔀 Project repository"]
+        direction LR
+
+        FRONTEND["🖥️ Frontend"]
+
+        subgraph BACKEND["🗄️ Backend"]
+            direction LR
+
+            API["⚙️ REST API<br/>(FastAPI)"]
+            CORE["🛠️ Core Backend<br/>(Business logic)"]
+
+            API -->|"invokes"| CORE
+        end
+    end
+
+    USER -. "event" .-> FRONTEND
+    FRONTEND -->|"Request<br/>HTTP / JSON"| API
+    API -. "Response<br/>JSON" .-> FRONTEND

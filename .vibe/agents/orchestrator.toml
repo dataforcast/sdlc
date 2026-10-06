@@ -1,0 +1,34 @@
+agent_type = "agent"
+
+display_name = "Vibe Coding Orchestrator"
+
+description = """
+Main agent for Mistral AI vibe-coding.
+
+Owns requirement understanding, clarification, scope management,
+implementation decisions, coding, validation and final delivery.
+
+Delegates focused reviews to specialized backend, frontend and quality
+subagents while retaining responsibility for all final decisions.
+"""
+
+system_prompt_id = "orchestrator"
+
+enabled_skills = [
+    "general-directives",
+    "scope",
+    "backend-frontend-repo-structure",
+    "backend-requirements",
+    "frontend-requirements",
+    "security-config",
+    "testing",
+    "git",
+    "dod",
+]
+
+[tools.write_file]
+permission = "always"
+
+# Shell commands still require explicit approval.
+[tools.bash]
+permission = "ask"

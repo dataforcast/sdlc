@@ -1,0 +1,28 @@
+agent_type = "subagent"
+
+display_name = "Backend Reviewer"
+
+description = """
+Review Python/FastAPI backend changes.
+Use for API contracts, Pydantic, async code, outbound HTTP,
+concurrency, shared state, external AI calls and backend security.
+Return findings to the parent agent; do not make architectural
+decisions outside the requested scope.
+"""
+
+safety = "safe"
+
+system_prompt_id = "backend-reviewer"
+
+enabled_skills = [
+    "scope",
+    "backend-requirements",
+    "security-config",
+    "testing",
+]
+
+enabled_tools = [
+    "skill",
+    "read_file",
+    "grep",
+]

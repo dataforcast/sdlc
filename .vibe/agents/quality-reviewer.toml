@@ -1,0 +1,36 @@
+
+### `.vibe/agents/quality-reviewer.toml`
+
+agent_type = "subagent"
+
+display_name = "Quality Reviewer"
+
+description = """
+Review the implemented solution against the current exercise scope,
+Definition of Done, acceptance criteria, testing requirements and relevant
+security requirements.
+
+Use near the end of an implementation slice.
+
+Focus on missing required behavior, insufficient validation, missing tests,
+security issues and deviations from the current scope.
+
+Do not perform unrelated architecture review or speculative improvements.
+"""
+
+safety = "safe"
+
+system_prompt_id = "quality-reviewer"
+
+enabled_skills = [
+    "scope",
+    "dod",
+    "testing",
+    "security-config",
+]
+
+enabled_tools = [
+    "skill",
+    "read_file",
+    "grep",
+]

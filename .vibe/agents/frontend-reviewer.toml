@@ -1,0 +1,27 @@
+# .vibe/agents/frontend-reviewer.toml
+
+agent_type = "subagent"
+
+display_name = "Frontend Reviewer"
+
+description = """
+Review React/TypeScript frontend changes and backend/frontend API
+integration. Use for React components, frontend API layer,
+OpenAPI-generated types, error states and contract consistency.
+"""
+
+safety = "safe"
+
+system_prompt_id = "frontend-reviewer"
+
+enabled_skills = [
+    "scope",
+    "frontend-requirements",
+    "backend-frontend-repo-structure",
+]
+
+enabled_tools = [
+    "skill",
+    "read_file",
+    "grep",
+]
