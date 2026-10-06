@@ -12,15 +12,6 @@ auto_use_tools = true
 
 [tools.bash]
 allowlist = [
-    "./scripts/*.sh",
-    "./scripts/run_backend_api_tests.sh",
-    "./scripts/run_frontend_backend_integration_tests.sh",
-    "./scripts/run_unit_tests.sh",
-    "./scripts/start_app.sh",
-    "./scripts/stop_app.sh",
-    ".venv/bin/python",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/*",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadliness_Prep/vibecoding/mistralai/round-vibe/backend/*",
     "/proc/$pid/*",
     "/proc/$pid/net/*",
     "/proc/*",
@@ -139,33 +130,26 @@ allowlist = [
 [tools.edit]
 permission = "always"
 allowlist = [
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/mistralai/project1.5/.env.example",
+    "../.env.example",
+    "../frontend/.env.example",
 ]
 
 [tools.write_file]
 allowlist = [
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/mistralai/project1.5/.env",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/mistralai/project1.5/.env.example",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/sdlc-2/.env",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/sdlc-2/backend/.env",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/sdlc-2/backend/.env.example",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/sdlc-2/frontend/.env.example",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/sdlc/backend/.env",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/sdlc/backend/.env.example",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/sdlc/frontend/.env",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/sdlc/frontend/.env.example",
+    "../.env.example",
+    "../backend/.env",
+    "../backend/.env.example",
+    "../frontend/.env",
+    "../frontend/.env.example",
 ]
 
 [tools.read_file]
 allowlist = [
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_LeadershipAI/ai-lab/AI_Leadership_Prep/vibecoding/mistralai/round-vibe/backend/*",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/mistralai/project1.5/.env",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/mistralai/project1.5/.env.example",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/mistralai/round-vibe/.env",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/mistralai/round-vibe/.env.example",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/sdlc-2/.env.example",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_Leadership_Prep/vibecoding/sdlc/backend/.env",
-    "/home/francois-bangui/Documents/Dataforcast/Missions/MistralAI/ai-lab/AI_leadership_Prep/vibecoding/mistralai/round-vibe/backend/*",
+    "../.env.example",
+    "../backend/.env",
+    "../backend/.env.example",
+    "../frontend/.env",
+    "../frontend/.env.example",
 ]
 
 [tools.task]
