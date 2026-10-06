@@ -235,7 +235,13 @@ The quality of coordination among sub-agents depends on both :
 
 
 # Applied Agentic architecture
-This architecture is designed to match with the HLD Architecture.
+
+This agentic architecture is designed to align with the HLD architecture.
+It combines:
+- Engineering best practices grouped under thematics “Skill”;
+- Automated checks delegated to specialized agents;
+- Human review at the end of each stage of the process.
+
 
 ![img.png](doc/vibe-architecture.png)
 
@@ -289,4 +295,25 @@ content into the mermaid document ./specs/hld.mmd
     3.3 Make frontend implementation
     3.4 Make backend/frontend implementation
 ```
+
+# Results
+
+An automatic execution is achieved with the command:
+> `vibe --agent orchestrator`
+
+To make it easier to track progress, the programming assistant is asked to record the 
+results in a report file, named here `plan/implementation-summary.md`.
+
+## Implementation Results
+
+For the **Ticket Processing Application** implementation in this repository, see:
+
+- **[Implementation Plan](plan/implementation-plan.md)** - Detailed 4-phase implementation roadmap
+- **[Implementation Summary](plan/implementation-summary.md)** - Complete summary with test results and acceptance criteria
+
+### Quick Statistics
+- ✅ **61/61 backend tests passing**
+- ✅ **TypeScript compilation: 0 errors**
+- ✅ **87 files created** (23 backend, 24 frontend, 6 config, 4 docs)
+- ✅ **All acceptance criteria satisfied**
 
