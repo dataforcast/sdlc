@@ -5,8 +5,10 @@ This module creates and configures the FastAPI application with all routers.
 """
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-from backend.app.api.endpoints import health, tickets, triage
+from app.api.endpoints import health, tickets, triage
+from app.config import settings
 
 
 # Create FastAPI application
@@ -35,6 +37,16 @@ app = FastAPI(
 )
 
 
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[f"http://localhost:{settings.frontend_port}"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 # Include routers
 app.include_router(health.router, prefix="/backend")
 app.include_router(tickets.router, prefix="/backend")
@@ -44,4 +56,4 @@ app.include_router(triage.router, prefix="/backend")
 # For standalone testing (if needed)
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=settings.backend_port)

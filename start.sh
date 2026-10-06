@@ -11,7 +11,28 @@ echo ""
 # Check if we should start backend
 START_BACKEND=${1:-true}
 START_FRONTEND=${2:-true}
-BACKEND_PORT=8010
+
+# Load environment variables from .env file (single source of truth)
+if [ -f .env ]; then
+    set -a
+    source .env
+    set +a
+fi
+
+# Set defaults if not defined in .env
+BACKEND_PORT=${BACKEND_PORT:-8010}
+FRONTEND_PORT=${FRONTEND_PORT:-5173}
+VITE_PORT=${VITE_PORT:-$FRONTEND_PORT}
+VITE_BACKEND_URL=${VITE_BACKEND_URL:-"http://localhost:${BACKEND_PORT}"}
+VITE_API_BASE_URL=${VITE_API_BASE_URL:-"/backend"}
+
+# Export environment variables
+export BACKEND_PORT
+export FRONTEND_PORT
+export VITE_PORT
+export VITE_BACKEND_URL
+export VITE_API_BASE_URL
+
 # Backend
 if [ "$START_BACKEND" = true ]; then
   echo "Starting backend server on port ${BACKEND_PORT}..."
@@ -33,13 +54,13 @@ sleep 3
 
 # Frontend
 if [ "$START_FRONTEND" = true ]; then
-  echo "Starting frontend server on port 5173..."
+  echo "Starting frontend server on port ${FRONTEND_PORT}..."
   cd frontend
   npm run dev &
   FRONTEND_PID=$!
   cd ..
   echo "Frontend PID: $FRONTEND_PID"
-  echo "Frontend available at: http://localhost:5173"
+  echo "Frontend available at: http://localhost:${FRONTEND_PORT}"
   echo ""
 fi
 
@@ -48,7 +69,7 @@ echo "  Application is running!"
 echo "========================================="
 echo ""
 echo "Backend:  http://localhost:${BACKEND_PORT}"
-echo "Frontend: http://localhost:5173"
+echo "Frontend: http://localhost:${FRONTEND_PORT}"
 echo ""
 echo "Press Ctrl+C to stop all servers"
 echo ""

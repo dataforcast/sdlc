@@ -317,3 +317,77 @@ For the **Ticket Processing Application** implementation in this repository, see
 - ✅ **87 files created** (23 backend, 24 frontend, 6 config, 4 docs)
 - ✅ **All acceptance criteria satisfied**
 
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.10+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+1. **Backend Setup:**
+   ```bash
+   cd backend
+   python -m venv venv
+   source venv/bin/activate  # On Linux/Mac
+   # or: venv\Scripts\activate  # On Windows
+   pip install -e .
+   pip install pydantic-settings
+   cd ..
+   ```
+
+2. **Frontend Setup:**
+   ```bash
+   cd frontend
+   npm install
+   cd ..
+   ```
+
+### Running the Application
+
+Use the `start.sh` script to launch both backend and frontend servers:
+
+```bash
+# Start with default ports (backend: 8010, frontend: 5173)
+./start.sh
+
+# Start with custom ports
+BACKEND_PORT=9000 FRONTEND_PORT=4000 ./start.sh
+
+# Start only backend
+./start.sh true false
+
+# Start only frontend
+./start.sh false true
+```
+
+### Environment Variables
+
+All environment variables are loaded from the **`.env` file at the project root**, which is the single source of truth.
+
+The `start.sh` script automatically loads variables from `.env` and exports them for both backend and frontend.
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `BACKEND_PORT` | 8010 | Backend server port |
+| `FRONTEND_PORT` | 5173 | Frontend server port |
+| `VITE_PORT` | 5173 | Vite dev server port |
+| `VITE_BACKEND_URL` | http://localhost:8010 | Backend API URL for proxy |
+| `VITE_API_BASE_URL` | /backend | API base URL for frontend client |
+
+### Accessing the Application
+
+Once started:
+- **Frontend:** http://localhost:5173 (or custom port)
+- **Backend API:** http://localhost:8010 (or custom port)
+- **API Docs (Swagger):** http://localhost:8010/docs
+- **API Docs (ReDoc):** http://localhost:8010/redoc
+
+### Stopping the Application
+
+Press `Ctrl+C` in the terminal to stop all servers.
+
