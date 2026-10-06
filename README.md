@@ -14,7 +14,7 @@ Build an application that helps an agent to process customers tickets.
 
 # High Level Design architecture
 
-![img.png](./doc/frontend-backend-repo.png)
+![Monorepository architecture: frontend, REST API and core backend](doc/frontend-backend-repo.png)
 This illustration presents a **monorepository architecture** in which the **frontend** and **backend** are maintained within the same source-code repository. 
 
 This type of organization is relatively common for projects of moderate complexity, 
@@ -43,7 +43,7 @@ The development process-here under is mapped with the architecture requirements 
 - Frontend is responsible for user interactions and presentation
 
 
-![img.png](doc/development-process.png)
+![Development process steps mapped to the architecture](doc/development-process.png)
 
 Step #6 is particularly relevant when the backend and frontend technologies are different, such as React+TypeScript for 
 the frontend and Python for the backend.
@@ -86,7 +86,7 @@ agents—that is, the code they generate—by controlling the context provided t
 > He may also be assisted by an 
 > AI controler agent  whom relevant human context is provided.
 
-![img.png](doc/specify-plan-execute.png)
+![Specify, Plan, Execute vibe-coding workflow](doc/specify-plan-execute.png)
 
 Let's regard AI programing agents dedicated to “vibe-coding” as tools that facilitate a process defined by the architect.
 
@@ -136,7 +136,7 @@ The links `Refined with`, `Validated with` and `Next release` are inter macro-bl
 This processus is iterative. Intents, Requirements and Acceptance criteria may evolve along with the solution 
 roadmap.
 
-![img.png](doc/vibe-engineering-process.png)
+![Vibe engineering SDD process: Intent, Requirements, Acceptance Criteria](doc/vibe-engineering-process.png)
 In the absence of such a framework, an AI programing agent —which relies on an optimized likelihood process— 
 has **considerable leeway** for interpretation. Such structured specifications are constraints 
 **reducing this interpretation space**. 
@@ -243,7 +243,7 @@ It combines:
 - Human review at the end of each stage of the process.
 
 
-![img.png](doc/vibe-architecture.png)
+![Applied agentic architecture overview](doc/vibe-architecture.png)
 
 
 ---
@@ -255,7 +255,7 @@ Orchestrator agent :
 - 
 
 
-![img.png](doc/orchestrator-agent.png)
+![Orchestrator agent workflow](doc/orchestrator-agent.png)
 
 This is the entry point for agentic vibe-coding.
 It manages the three other agents : `backend-reviewer` agent, `frontend-reviewer` agent and `quality-reviewer` agent.
@@ -263,7 +263,7 @@ It manages the three other agents : `backend-reviewer` agent, `frontend-reviewer
 
 ## `backend-reviewer` agent
 
-![img.png](doc/backend-reviewer-agent.png)
+![Backend reviewer agent workflow](doc/backend-reviewer-agent.png)
 
 
 This agent is in charge for reviewing the backend implementation.
@@ -276,13 +276,13 @@ Reviewing stands for, while taking into account `backend-requirements` skills :
 
 ## `Frontend-reviewer` agent
 
-![img.png](doc/frontend-reviewer.png)
+![Frontend reviewer agent workflow](doc/frontend-reviewer.png)
 
 Skills related to `Frontend-reviewer` exclude security and testing that have been considered as out-of-scope.
 
 ## `Quality-reviewer` agent
 
-![img.png](doc/quality-reviewer.png)
+![Quality reviewer agent workflow](doc/quality-reviewer.png)
 
 As an exemple of the prompt requesting the AI programing agent to build the plan :
 ```text
@@ -301,13 +301,18 @@ content into the mermaid document ./specs/hld.mmd
 An automatic execution is achieved with the command:
 > `vibe --agent orchestrator`
 
-To make it easier to track progress, the programming assistant is asked to record the 
-results in a report file, named here `plan/implementation-summary.md`.
-
 ## Implementation
 
 For the **Ticket Triage Application** implementation in this repository, see the
 **[Implementation Plan](plan/implementation-plan.md)**.
+
+### Quick Statistics
+- ✅ **29/29 backend unit tests passing** (`./scripts/run_unit_tests.sh`)
+- ✅ **8/8 backend API tests passing** (`./scripts/run_backend_api_tests.sh`)
+- ✅ **Frontend/backend integration test passing** (`./scripts/run_frontend_backend_integration_tests.sh`)
+- ✅ **TypeScript compilation: 0 errors**
+- ✅ **Full user journey validated end to end** through the real Vite proxy: list → filter → triage → acquire → edit/submit through reviewed→processing→closed → reset
+- ✅ **Reviewed** by `backend-reviewer`, `frontend-reviewer`, and `quality-reviewer`; findings applied (defensive-copy ticket store, Reset clearing filter state, refreshed documentation)
 
 ---
 
