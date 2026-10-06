@@ -17,4 +17,4 @@ description: >
 - No authentification neither authorization features
 - No data persistence into database, "In memory" persistence
 - Use `pyproject.toml` as the single source of truth for dependencies; do not maintain `requirements.txt` and remove it if present.
-- Data creation for a demo : build 20 Pokemons
+- Data creation for a demo : build 20 support tickets

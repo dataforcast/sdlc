@@ -36,7 +36,9 @@
       "Write(backend/.env)",
       "Write(backend/.env.example)",
       "Write(frontend/.env)",
-      "Write(frontend/.env.example)"
+      "Write(frontend/.env.example)",
+      "Edit(**)",
+      "Write(**)"
     ],
     "ask": [
       "Bash(git reset:*)", "Bash(git rm:*)",
@@ -44,9 +46,7 @@
       "Bash(mkdir:*)", "Bash(touch:*)",
       "Bash(kill:*)", "Bash(pkill:*)", "Bash(fuser:*)",
       "Bash(lsof:*)", "Bash(netstat:*)", "Bash(ss:*)", "Bash(nohup:*)",
-      "Bash(curl:*)", "Bash(pip install:*)",
-      "Edit(**)",
-      "Write(**)"
+      "Bash(curl:*)", "Bash(pip install:*)"
     ],
     "deny": [
       "Bash(git push:*)",

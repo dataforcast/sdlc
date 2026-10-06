@@ -14,7 +14,7 @@ Build an application that helps an agent to process customers tickets.
 
 # High Level Design architecture
 
-![img.png](doc/frontend-backend-repo.png)
+![img.png](./doc/frontend-backend-repo.png)
 This illustration presents a **monorepository architecture** in which the **frontend** and **backend** are maintained within the same source-code repository. 
 
 This type of organization is relatively common for projects of moderate complexity, 
@@ -304,18 +304,10 @@ An automatic execution is achieved with the command:
 To make it easier to track progress, the programming assistant is asked to record the 
 results in a report file, named here `plan/implementation-summary.md`.
 
-## Implementation Results
+## Implementation
 
-For the **Ticket Processing Application** implementation in this repository, see:
-
-- **[Implementation Plan](plan/implementation-plan.md)** - Detailed 4-phase implementation roadmap
-- **[Implementation Summary](plan/implementation-summary.md)** - Complete summary with test results and acceptance criteria
-
-### Quick Statistics
-- ✅ **61/61 backend tests passing**
-- ✅ **TypeScript compilation: 0 errors**
-- ✅ **87 files created** (23 backend, 24 frontend, 6 config, 4 docs)
-- ✅ **All acceptance criteria satisfied**
+For the **Ticket Triage Application** implementation in this repository, see the
+**[Implementation Plan](plan/implementation-plan.md)**.
 
 ---
 
@@ -323,71 +315,72 @@ For the **Ticket Processing Application** implementation in this repository, see
 
 ### Prerequisites
 
-- Python 3.10+
-- Node.js 18+
-- npm or yarn
+- Python 3.12+ with [`uv`](https://docs.astral.sh/uv/)
+- Node.js 18+ with [`pnpm`](https://pnpm.io/)
 
 ### Installation
 
 1. **Backend Setup:**
    ```bash
    cd backend
-   python -m venv venv
-   source venv/bin/activate  # On Linux/Mac
-   # or: venv\Scripts\activate  # On Windows
-   pip install -e .
-   pip install pydantic-settings
+   uv sync
    cd ..
    ```
 
 2. **Frontend Setup:**
    ```bash
    cd frontend
-   npm install
+   pnpm install
    cd ..
+   ```
+
+3. **Environment:**
+   ```bash
+   cp .env.example .env
    ```
 
 ### Running the Application
 
-Use the `start.sh` script to launch both backend and frontend servers:
-
 ```bash
-# Start with default ports (backend: 8010, frontend: 5173)
-./start.sh
-
-# Start with custom ports
-BACKEND_PORT=9000 FRONTEND_PORT=4000 ./start.sh
-
-# Start only backend
-./start.sh true false
-
-# Start only frontend
-./start.sh false true
+./scripts/start_app.sh
 ```
+
+Starts both the backend and the frontend dev server in the background,
+writing PID files and logs under `.run/`.
 
 ### Environment Variables
 
-All environment variables are loaded from the **`.env` file at the project root**, which is the single source of truth.
-
-The `start.sh` script automatically loads variables from `.env` and exports them for both backend and frontend.
+All environment variables are loaded from the **`.env` file at the project root**,
+which is the single source of truth. See `.env.example`:
 
 | Variable | Default | Description |
 |----------|---------|-------------|
+| `BACKEND_HOST` | 127.0.0.1 | Backend bind host |
 | `BACKEND_PORT` | 8010 | Backend server port |
-| `FRONTEND_PORT` | 5173 | Frontend server port |
-| `VITE_PORT` | 5173 | Vite dev server port |
-| `VITE_BACKEND_URL` | http://localhost:8010 | Backend API URL for proxy |
-| `VITE_API_BASE_URL` | /backend | API base URL for frontend client |
+| `FRONTEND_PORT` | 5173 | Vite dev server port |
+| `CORS_ORIGIN` | http://localhost:5173 | Origin allowed to call the backend |
+| `DEMO_USER_ID` | agent-1 | Hardcoded demo user assigned on ticket acquire (no auth) |
+| `API_BASE_URL` | http://127.0.0.1:8010 | Backend origin used by Orval generation, the Vite proxy target, and the integration test |
 
 ### Accessing the Application
 
 Once started:
-- **Frontend:** http://localhost:5173 (or custom port)
-- **Backend API:** http://localhost:8010 (or custom port)
+- **Frontend:** http://localhost:5173 (or `$FRONTEND_PORT`)
+- **Backend API:** http://localhost:8010 (or `$BACKEND_PORT`)
 - **API Docs (Swagger):** http://localhost:8010/docs
-- **API Docs (ReDoc):** http://localhost:8010/redoc
+- **OpenAPI contract:** http://localhost:8010/openapi.json
 
 ### Stopping the Application
 
-Press `Ctrl+C` in the terminal to stop all servers.
+```bash
+./scripts/stop_app.sh
+```
+
+### Running the tests
+
+```bash
+./scripts/run_unit_tests.sh
+./scripts/run_backend_api_tests.sh
+./scripts/run_frontend_backend_integration_tests.sh
+```
 

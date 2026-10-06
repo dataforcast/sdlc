@@ -1,0 +1,30 @@
+{
+  "name": "ticket-triage-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "api:generate": "orval --config orval.config.ts",
+    "test:api-integration": "tsx tests/integration/api-client.integration.ts"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "orval": "^7.5.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.11"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  }
+}
