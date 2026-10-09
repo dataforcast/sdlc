@@ -14,17 +14,14 @@ requirement source — the binding decisions below supersede it.)
 
 Before planning, four ambiguities were resolved with the stakeholder:
 
-1. **Demo data**: the `scope` skill currently says "build 20 Pokemons" —
-   confirmed stale copy-paste artifact. Corrected to **20 mock support
-   tickets**, seeded at backend startup.
-2. **FSM ↔ UI mapping**: `Acquire` is a dedicated action = `pending→reviewed`
+1. **FSM ↔ UI mapping**: `Acquire` is a dedicated action = `pending→reviewed`
    **and** assigns the ticket to the hardcoded demo user. All further
    transitions (`reviewed→processing`, `processing→closed`, and legal
    self-loops) are chosen from a list of legal next-states on the ticket
-   detail view and applied via `Submit`.
-3. **Identity**: no auth anywhere. The acting user is a single hardcoded demo
-   user id (e.g. `agent-1`), from `.env` — never supplied by the client.
-4. **Ticket creation**: `POST /backend/api/triage` is the ticket-creation
+   detail view and applied via `Submit`. 
+2. **Identity**: no auth anywhere. The acting user is a single hardcoded demo
+   user id (e.g. `agent-1`), from `.env` — never supplied by the client. 
+3. **Ticket creation**: `POST /backend/api/triage` is the ticket-creation
    entry point (classifies + drafts + creates a `pending` ticket). The same
    logic seeds 20 tickets internally at startup from canned raw texts.
 
@@ -52,8 +49,6 @@ identical):
 - `.claude/skills/scope/SKILL.md`
 - `.vibe/skills/scope/SKILL.md`
 
-`- Data creation for a demo : build 20 Pokemons` → `- Data creation for a
-demo : build 20 support tickets`
 
 Create:
 
